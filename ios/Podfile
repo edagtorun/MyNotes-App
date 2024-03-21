@@ -1,9 +1,19 @@
 # Resolve react_native_pods.rb with node to allow for hoisting
-require Pod::Executable.execute_command('node', ['-p',
-  'require.resolve(
-    "react-native/scripts/react_native_pods.rb",
-    {paths: [process.argv[1]]},
-  )', __dir__]).strip
+require 'open3'
+
+stdout_str, stderr_str, status = Open3.capture3('node', '-p', 'require.resolve("react-native/scripts/react_native_pods.rb", {paths: [process.argv[1]]})', __dir__)
+
+unless status.success?
+  abort stderr_str
+end
+
+eval_stdout = stdout_str.strip
+
+if eval_stdout.empty?
+  abort "Unable to find react_native_pods.rb"
+end
+
+eval "require '#{eval_stdout}'"
 
 platform :ios, min_ios_version_supported
 prepare_react_native_project!
@@ -17,16 +27,18 @@ prepare_react_native_project!
 #   dependencies: {
 #     ...(process.env.NO_FLIPPER ? { 'react-native-flipper': { platforms: { ios: null } } } : {}),
 # ```
+
 flipper_config = ENV['NO_FLIPPER'] == "1" ? FlipperConfiguration.disabled : FlipperConfiguration.enabled
 
 linkage = ENV['USE_FRAMEWORKS']
 if linkage != nil
   Pod::UI.puts "Configuring Pod with #{linkage}ally linked Frameworks".green
-  use_frameworks! :linkage => linkage.to_sym
+  use_frameworks! 
 end
 
 target 'myNotesApp' do
   config = use_native_modules!
+  puts "Config: #{config.inspect}"
 
   use_react_native!(
     :path => config[:reactNativePath],

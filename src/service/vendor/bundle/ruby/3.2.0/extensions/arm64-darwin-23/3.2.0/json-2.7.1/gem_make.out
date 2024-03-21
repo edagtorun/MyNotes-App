@@ -1,0 +1,16 @@
+current directory: /Users/EdaGizemTORUN/Desktop/myNotesApp/vendor/bundle/ruby/3.2.0/gems/json-2.7.1/ext/json
+/Users/EdaGizemTORUN/.rbenv/versions/3.2.2/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /Users/EdaGizemTORUN/Desktop/myNotesApp/vendor/bundle/ruby/3.2.0/gems/json-2.7.1/ext/json
+make DESTDIR\= sitearchdir\=./.gem.20240301-1740-jxp2lw sitelibdir\=./.gem.20240301-1740-jxp2lw clean
+
+current directory: /Users/EdaGizemTORUN/Desktop/myNotesApp/vendor/bundle/ruby/3.2.0/gems/json-2.7.1/ext/json
+make DESTDIR\= sitearchdir\=./.gem.20240301-1740-jxp2lw sitelibdir\=./.gem.20240301-1740-jxp2lw
+make: Nothing to be done for `all'.
+
+current directory: /Users/EdaGizemTORUN/Desktop/myNotesApp/vendor/bundle/ruby/3.2.0/gems/json-2.7.1/ext/json
+make DESTDIR\= sitearchdir\=./.gem.20240301-1740-jxp2lw sitelibdir\=./.gem.20240301-1740-jxp2lw install
+
+current directory: /Users/EdaGizemTORUN/Desktop/myNotesApp/vendor/bundle/ruby/3.2.0/gems/json-2.7.1/ext/json
+make DESTDIR\= sitearchdir\=./.gem.20240301-1740-jxp2lw sitelibdir\=./.gem.20240301-1740-jxp2lw clean
